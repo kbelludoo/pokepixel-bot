@@ -2,21 +2,20 @@
   "accounts": [
     {
       "currentArea": "Vulpix",
-      "durationSec": 1814,
-      "expPerHour": 38103.63836824697,
+      "durationSec": 1934,
+      "expPerHour": 38360.28955532575,
       "extra": {
         "circuitState": "CLOSED (Operação Normal)",
         "cooldownSec": 0,
         "leaderLevel": 7,
         "leaderName": ""
       },
-      "gold": 2844,
+      "gold": 2866,
       "hp": 106,
       "id": "acc-1",
-      "kills": 602,
+      "kills": 646,
       "level": 7,
       "logs": [
-        "[10:27:59] Treinador conectado: Treinador #1 (Nível 7 | Ouro: 2544)",
         "[10:27:59] Catálogo carregado: 377 zonas de caça disponíveis.",
         "[10:28:00] Conectando ao canal em tempo real WebSocket...",
         "[10:28:00] WebSocket conectado com sucesso! Sessão autoritativa iniciada.",
@@ -35,19 +34,20 @@
         "[10:31:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[10:41:51] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[10:49:49] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[10:58:08] 🎁 Coletando recompensas diárias, missões e stamina..."
+        "[10:58:08] 🎁 Coletando recompensas diárias, missões e stamina...",
+        "[11:00:10] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
       ],
       "mana": 0,
       "maxHp": 106,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792407492580,
+      "updatedAt": 1792407612580,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 17,
-  "ramAllocMB": 1.2880172729492188,
+  "goroutines": 16,
+  "ramAllocMB": 1.0898361206054688,
   "ramSysMB": 13.099861145019531,
-  "uptime": "30m14s"
+  "uptime": "32m16s"
 }
