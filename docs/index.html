@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ PokePixel Idle — Autonomous Multi-Bot & Live Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(16, 185, 129, 0.25);
+      --card-hover: rgba(16, 185, 129, 0.45);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --cyan: #00f0ff;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(0, 240, 255, 0.05) 0%, transparent 45%),
+        linear-gradient(to bottom, #07090e, #0c1017);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 24px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand h1 span {
+      color: var(--accent);
+    }
+
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-live::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .btn-nav:hover {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+    }
+
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-route {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .acc-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .acc-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .acc-name {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .acc-level {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: rgba(16, 185, 129, 0.15);
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .metric-cell {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    .metric-cell span {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .metric-cell strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .bar-wrapper {
+      margin-top: 10px;
+    }
+
+    .bar-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .progress-bar {
+      height: 7px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #00f0ff);
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+
+    .log-stream {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 12px;
+      height: 320px;
+      overflow-y: auto;
+      color: #94a3b8;
+    }
+
+    .log-entry {
+      margin-bottom: 6px;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    .log-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .log-entry.highlight {
+      color: #4ade80;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .feature-item::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>⚡ PokePixel <span>Idle</span></h1>
+        <span class="badge-live" id="liveBadge">ONLINE • VPS GO NATIVE</span>
+      </div>
+      <div class="nav-actions">
+        <a href="https://kbelludoo.github.io/bot-template-go/?v=force1" class="btn-nav">⚡ Central Command Center</a>
+        <a href="https://github.com/kbelludoo/pokepixel-bot" target="_blank" class="btn-nav">GitHub Repository ↗</a>
+      </div>
+    </header>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-label">Abates Totais</div>
+        <div class="stat-val" id="statKills">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Ouro Acumulado</div>
+        <div class="stat-val" id="statGold" style="color: var(--gold);">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Taxa EXP/Hora</div>
+        <div class="stat-val" id="statExp" style="color: var(--cyan);">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Consumo de RAM</div>
+        <div class="stat-val" id="statRam" style="color: var(--accent);">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tempo em Operação</div>
+        <div class="stat-val" id="statUptime" style="font-size: 1.15rem;">—</div>
+      </div>
+    </div>
+
+    <div class="main-grid">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🎮 Treinadores Ativos na VPS</div>
+          <span class="badge-route" id="zoneBadge">Rota Ótima: Calculando...</span>
+        </div>
+
+        <div id="trainerContainer">
+          <div style="color: var(--text-dim); font-size: 0.85rem; padding: 20px; text-align: center;">Carregando dados da telemetria...</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📜 Terminal de Eventos ao Vivo</div>
+        </div>
+        <div class="log-stream" id="logStream">
+          <div class="log-entry">Aguardando telemetria em tempo real...</div>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 6px;">🛡️ Módulos Autônomos Ativos:</div>
+          <ul class="feature-list">
+            <li class="feature-item">Dynamic Route Solver (18 Elementos)</li>
+            <li class="feature-item">Auto-Capture (Pokéball + Shiny Handler)</li>
+            <li class="feature-item">Anti-Cheat CircuitBreaker Ativo</li>
+            <li class="feature-item">Auto-Daily, Farm Offline & Correio</li>
+            <li class="feature-item">Auto-Heal & Joy Centro Pokémon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      ⚡ PokePixel Idle Bot Engine — Desenvolvido em Go Puro • VPS Oracle Linux 64-bit • Stealth Anônimo Ativo
+    </footer>
+  </div>
+
+  <script>
+    async function loadStatus() {
+      try {
+        const res = await fetch('status.json?t=' + Date.now());
+        if (!res.ok) return;
+        const data = await res.json();
+        renderDashboard(data);
+      } catch (err) {
+        console.warn('Erro ao carregar status:', err);
+      }
+    }
+
+    function renderDashboard(data) {
+      const accounts = data.accounts || [];
+      const ram = data.ramAllocMB ? `${data.ramAllocMB.toFixed(1)} MB` : '< 2 MB';
+      const uptime = data.uptime || 'Operando';
+
+      let totalKills = 0;
+      let totalGold = 0;
+      let totalExpRate = 0;
+      let mainZone = 'Rota 1';
+
+      accounts.forEach(acc => {
+        totalKills += acc.kills || 0;
+        totalGold += acc.gold || 0;
+        totalExpRate += acc.expPerHour || 0;
+        if (acc.currentArea) mainZone = acc.currentArea;
+      });
+
+      document.getElementById('statKills').textContent = totalKills.toLocaleString('pt-BR');
+      document.getElementById('statGold').textContent = totalGold.toLocaleString('pt-BR');
+      document.getElementById('statExp').textContent = Math.round(totalExpRate).toLocaleString('pt-BR') + ' /h';
+      document.getElementById('statRam').textContent = ram;
+      document.getElementById('statUptime').textContent = uptime;
+      document.getElementById('zoneBadge').textContent = '🗺️ Zona Ativa: ' + mainZone;
+
+      const container = document.getElementById('trainerContainer');
+      if (accounts.length > 0) {
+        container.innerHTML = accounts.map((acc, i) => {
+          const hpPct = acc.maxHp ? Math.round((acc.hp / acc.maxHp) * 100) : 100;
+          return `
+            <div class="acc-box">
+              <div class="acc-top">
+                <span class="acc-name">⚡ ${acc.name || 'Treinador #' + (i + 1)}</span>
+                <span class="acc-level">Lv. ${acc.level || 1}</span>
+              </div>
+
+              <div class="bar-wrapper">
+                <div class="bar-info">
+                  <span>HP Vital</span>
+                  <span>${acc.hp || 0} / ${acc.maxHp || 100} (${hpPct}%)</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: ${hpPct}%;"></div>
+                </div>
+              </div>
+
+              <div class="metrics-row">
+                <div class="metric-cell">
+                  <span>Abates</span>
+                  <strong>${(acc.kills || 0).toLocaleString('pt-BR')}</strong>
+                </div>
+                <div class="metric-cell">
+                  <span>Ouro</span>
+                  <strong style="color: var(--gold);">${(acc.gold || 0).toLocaleString('pt-BR')}</strong>
+                </div>
+                <div class="metric-cell">
+                  <span>EXP/Hora</span>
+                  <strong style="color: var(--cyan);">${Math.round(acc.expPerHour || 0).toLocaleString('pt-BR')}</strong>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Atualizar logs
+      const stream = document.getElementById('logStream');
+      const allLogs = [];
+      accounts.forEach(acc => {
+        if (acc.logs && Array.isArray(acc.logs)) {
+          allLogs.push(...acc.logs);
+        }
+      });
+
+      if (allLogs.length > 0) {
+        stream.innerHTML = allLogs.slice(-25).map(l => {
+          const isHighlight = l.includes('🎯') || l.includes('🌟') || l.includes('🎉') || l.includes('⚔️');
+          return `<div class="log-entry ${isHighlight ? 'highlight' : ''}">${escapeHtml(l)}</div>`;
+        }).join('');
+        stream.scrollTop = stream.scrollHeight;
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    loadStatus();
+    setInterval(loadStatus, 3000);
+  </script>
+</body>
+</html>

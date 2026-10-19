@@ -1,0 +1,27 @@
+[
+  {
+    "id": "acc-1",
+    "name": "Conta Principal",
+    "enabled": true,
+    "bindIP": "",
+    "credentials": {
+      "email": "seu_email@exemplo.com",
+      "password": "sua_senha",
+      "token": ""
+    },
+    "settings": {
+      "huntTarget": "auto",
+      "autoHunt": true,
+      "autoHeal": true,
+      "hpThreshold": 40,
+      "autoCapture": true,
+      "autoCaptureShiny": true,
+      "autoSell": true,
+      "autoExtract": true,
+      "autoDaily": true,
+      "autoProfessions": true,
+      "autoBreeding": true,
+      "stealthMode": true
+    }
+  }
+]

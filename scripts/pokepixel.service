@@ -1,0 +1,17 @@
+[Unit]
+Description=PokePixel Native Go Multi-Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/pokepixel-bot
+ExecStart=/home/ubuntu/pokepixel-bot/pokepixel-bot-linux
+Restart=always
+RestartSec=5s
+Environment=PORT=3015
+Environment=GOGC=50
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
