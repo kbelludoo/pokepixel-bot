@@ -535,3 +535,107 @@ func (c *GameClient) GetSpeciesGoals() ([]SpeciesGoal, error) {
 	return nil, err
 }
 
+
+
+// ----------------------------------------------------------------------------
+// Workforce / Mineração e Fazenda Presencial
+// ----------------------------------------------------------------------------
+
+func (c *GameClient) GetMiningWorkforce() (*WorkforceResponse, error) {
+	var resp WorkforceResponse
+	err := c.DoRequest(http.MethodGet, "/professions/mining/workforce", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) AssignMiningWorker(creatureID string, slotIndex int) error {
+	body := map[string]any{
+		"creature_id": creatureID,
+		"slot_index":  slotIndex,
+	}
+	return c.DoRequest(http.MethodPost, "/professions/mining/workers/assign", body, nil, true)
+}
+
+func (c *GameClient) GetFarmWorkforce() (*WorkforceResponse, error) {
+	var resp WorkforceResponse
+	err := c.DoRequest(http.MethodGet, "/professions/farming/workforce", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) AssignFarmWorker(creatureID string, slotIndex int) error {
+	body := map[string]any{
+		"creature_id": creatureID,
+		"slot_index":  slotIndex,
+	}
+	return c.DoRequest(http.MethodPost, "/professions/farming/workers/assign", body, nil, true)
+}
+
+// ----------------------------------------------------------------------------
+// Map Quests (Mapas de Missão)
+// ----------------------------------------------------------------------------
+
+func (c *GameClient) GetMapQuests() (*MapQuestsResponse, error) {
+	var resp MapQuestsResponse
+	err := c.DoRequest(http.MethodGet, "/map-quests", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) ForgeMapQuest() error {
+	return c.DoRequest(http.MethodPost, "/map-quests/forge", map[string]any{}, nil, true)
+}
+
+func (c *GameClient) ClaimMapQuest(questID string) error {
+	endpoint := fmt.Sprintf("/map-quests/%s/claim", questID)
+	return c.DoRequest(http.MethodPost, endpoint, map[string]any{}, nil, true)
+}
+
+// ----------------------------------------------------------------------------
+// Halloween 2026 Event
+// ----------------------------------------------------------------------------
+
+func (c *GameClient) GetHalloween() (*HalloweenResponse, error) {
+	var resp HalloweenResponse
+	err := c.DoRequest(http.MethodGet, "/seasonal/halloween-2026", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) ClaimHalloween(target, day string) error {
+	body := map[string]any{
+		"target": target,
+		"day":    day,
+	}
+	return c.DoRequest(http.MethodPost, "/seasonal/halloween-2026/claim", body, nil, true)
+}
+
+// ----------------------------------------------------------------------------
+// PvP Missions
+// ----------------------------------------------------------------------------
+
+func (c *GameClient) GetPvPMissions() (*PvPMissionsResponse, error) {
+	var resp PvPMissionsResponse
+	err := c.DoRequest(http.MethodGet, "/pvp/missions", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) ClaimPvPMission(missionID string) error {
+	endpoint := fmt.Sprintf("/pvp/missions/%s/claim", missionID)
+	return c.DoRequest(http.MethodPost, endpoint, map[string]any{}, nil, true)
+}
+
+// ----------------------------------------------------------------------------
+// Shared Stones (Pedras Compartilhadas)
+// ----------------------------------------------------------------------------
+
+func (c *GameClient) GetSharedStoneOverview() (*SharedStonesOverview, error) {
+	var resp SharedStonesOverview
+	err := c.DoRequest(http.MethodGet, "/shared-stones/overview", nil, &resp, false)
+	return &resp, err
+}
+
+func (c *GameClient) EngraveSharedStone(creatureID, itemID string, slotIndex int) error {
+	body := map[string]any{
+		"creature_id": creatureID,
+		"item_id":     itemID,
+		"slot_index":  slotIndex,
+	}
+	return c.DoRequest(http.MethodPost, "/shared-stones/engravings", body, nil, true)
+}

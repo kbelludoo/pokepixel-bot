@@ -112,6 +112,7 @@ type Creature struct {
 	IsShiny    bool      `json:"is_shiny"`
 	Quality    string    `json:"quality"`
 	Location   string    `json:"location"` // "team" ou "box"
+	SharedStones int       `json:"shared_stones,omitempty"`
 }
 
 type InventoryItem struct {
@@ -176,7 +177,7 @@ type StaminaResponse struct {
 	MaxStamina int `json:"max_stamina"`
 }
 
-type WorkforceResponse struct {
+type LegacyWorkforceResponse struct {
 	Slots []WorkforceSlot `json:"slots"`
 }
 
@@ -283,3 +284,109 @@ type SpeciesGoalTier struct {
 	Rewards   []any `json:"rewards"`
 }
 
+
+
+// ----------------------------------------------------------------------------
+// Workforce / Mineração & Fazenda Presencial
+// ----------------------------------------------------------------------------
+
+type WorkforceCandidate struct {
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	SpeciesID string `json:"species_id"`
+	Level     int    `json:"level"`
+	IsShiny   bool   `json:"is_shiny"`
+}
+
+type WorkforceWorker struct {
+	SlotIndex      int    `json:"slot_index"`
+	CreatureID     string `json:"creature_id"`
+	CreatureName   string `json:"creature_name"`
+	CanCollect     bool   `json:"can_collect"`
+	CyclesComplete int    `json:"cycles_complete"`
+}
+
+type WorkforceData struct {
+	MaxSlots   int                  `json:"max_slots"`
+	Workers    []WorkforceWorker    `json:"workers"`
+	Candidates []WorkforceCandidate `json:"candidates"`
+}
+
+type WorkforceResponse struct {
+	Data WorkforceData `json:"data"`
+}
+
+// ----------------------------------------------------------------------------
+// Map Quests (Mapas de Missão)
+// ----------------------------------------------------------------------------
+
+type MapQuestItem struct {
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Status   string `json:"status"`
+	Progress int    `json:"progress"`
+	Goal     int    `json:"goal"`
+}
+
+type MapQuestsResponse struct {
+	Fragments         int            `json:"fragments"`
+	FragmentsRequired int            `json:"fragments_required"`
+	MaxActive         int            `json:"max_active"`
+	Active            int            `json:"active"`
+	Quests            []MapQuestItem `json:"quests"`
+}
+
+// ----------------------------------------------------------------------------
+// Halloween 2026 Event
+// ----------------------------------------------------------------------------
+
+type HalloweenDay struct {
+	Day             string   `json:"day"`
+	Kills           int      `json:"kills"`
+	Captures        int      `json:"captures"`
+	CostumeCaptures int      `json:"costume_captures"`
+	Boss            bool     `json:"boss"`
+	Claimed         []string `json:"claimed"`
+}
+
+type HalloweenResponse struct {
+	ID      string         `json:"id"`
+	Balance int            `json:"balance"`
+	Days    []HalloweenDay `json:"days"`
+}
+
+// ----------------------------------------------------------------------------
+// PvP Missions
+// ----------------------------------------------------------------------------
+
+type PvPMissionItem struct {
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	Progress  int    `json:"progress"`
+	Goal      int    `json:"goal"`
+	Completed bool   `json:"completed"`
+	Claimed   bool   `json:"claimed"`
+}
+
+type PvPMissionsResponse struct {
+	DayKey   string           `json:"day_key"`
+	Missions []PvPMissionItem `json:"missions"`
+}
+
+// ----------------------------------------------------------------------------
+// Shared Stones (Pedras Compartilhadas)
+// ----------------------------------------------------------------------------
+
+type SharedStonesItem struct {
+	ItemID   string `json:"item_id"`
+	Name     string `json:"name"`
+	Quantity int    `json:"quantity"`
+	Region   string `json:"region"`
+}
+
+type SharedStonesOverview struct {
+	Enabled  bool               `json:"enabled"`
+	Gold     int64              `json:"gold"`
+	Diamonds int64              `json:"diamonds"`
+	Items    []SharedStonesItem `json:"items"`
+}

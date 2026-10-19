@@ -684,11 +684,81 @@ func (b *Bot) claimAllDailies() {
 	for day := 1; day <= 7; day++ {
 		_ = b.client.ClaimNewcomerJourney(day)
 	}
+
+	// 1. Evento Halloween 2026
+	if hw, err := b.client.GetHalloween(); err == nil && hw != nil {
+		goals := map[string]int{"kills": 100, "captures": 10, "costume_captures": 1}
+		for _, d := range hw.Days {
+			claimedMap := make(map[string]bool)
+			for _, c := range d.Claimed {
+				claimedMap[c] = true
+			}
+			if d.Kills >= goals["kills"] && !claimedMap["kills"] {
+				if err := b.client.ClaimHalloween("kills", d.Day); err == nil {
+					b.addLog(fmt.Sprintf("🎃 [Halloween] Recompensa de 100 abates resgatada (+50 doces, dia %s)", d.Day))
+				}
+			}
+			if d.Captures >= goals["captures"] && !claimedMap["captures"] {
+				if err := b.client.ClaimHalloween("captures", d.Day); err == nil {
+					b.addLog(fmt.Sprintf("🎃 [Halloween] Recompensa de 10 capturas resgatada (+50 doces, dia %s)", d.Day))
+				}
+			}
+			if d.CostumeCaptures >= goals["costume_captures"] && !claimedMap["costume_captures"] {
+				if err := b.client.ClaimHalloween("costume_captures", d.Day); err == nil {
+					b.addLog(fmt.Sprintf("🎃 [Halloween] Recompensa de fantasia resgatada (+50 doces, dia %s)", d.Day))
+				}
+			}
+		}
+	}
+
+	// 2. Missões de PvP Diário
+	if pvpRes, err := b.client.GetPvPMissions(); err == nil && pvpRes != nil {
+		for _, m := range pvpRes.Missions {
+			if m.Completed && !m.Claimed {
+				if err := b.client.ClaimPvPMission(m.ID); err == nil {
+					b.addLog(fmt.Sprintf("⚔️ [PvP] Missão diária '%s' resgatada!", m.Name))
+				}
+			}
+		}
+	}
+
+	// 3. Map Quests (Mapas de Missão)
+	if mq, err := b.client.GetMapQuests(); err == nil && mq != nil {
+		for _, q := range mq.Quests {
+			if q.Status == "completed" || (q.Goal > 0 && q.Progress >= q.Goal) {
+				if err := b.client.ClaimMapQuest(q.ID); err == nil {
+					b.addLog(fmt.Sprintf("🗺️ [Map Quest] Missão de mapa '%s' concluída e resgatada!", q.Name))
+				}
+			}
+		}
+		if mq.Fragments >= mq.FragmentsRequired && mq.Active < mq.MaxActive {
+			if err := b.client.ForgeMapQuest(); err == nil {
+				b.addLog("🗺️ [Map Quest] Novo mapa forjado a partir de fragmentos!")
+			}
+		}
+	}
+
+	// 4. Pedras Compartilhadas (Shared Stones)
+	if ss, err := b.client.GetSharedStoneOverview(); err == nil && ss != nil {
+		for _, it := range ss.Items {
+			if it.Quantity > 0 {
+				creatures, _ := b.client.GetCreatures("team")
+				for _, c := range creatures {
+					if c.SharedStones < 10 {
+						if err := b.client.EngraveSharedStone(c.ID, it.ItemID, c.SharedStones); err == nil {
+							b.addLog(fmt.Sprintf("💎 [Pedra Compartilhada] Pedra %s gravada com sucesso em %s!", it.Name, c.Name))
+							break
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 func (b *Bot) runProfessionsLoop(ctx context.Context) {
 	time.Sleep(10 * time.Second)
-	ticker := time.NewTicker(5 * time.Minute)
+	ticker := time.NewTicker(2 * time.Minute)
 	defer ticker.Stop()
 
 	for {
@@ -703,8 +773,30 @@ func (b *Bot) runProfessionsLoop(ctx context.Context) {
 				continue
 			}
 
-			// Coletar recompensas dos slots de mineração e fazenda
-			for slot := 0; slot < 4; slot++ {
+			// 1. Mineração: verificar se precisa alocar trabalhador no slot 1
+			mining, err := b.client.GetMiningWorkforce()
+			if err == nil && mining != nil {
+				if len(mining.Data.Workers) == 0 && len(mining.Data.Candidates) > 0 {
+					cand := mining.Data.Candidates[0]
+					if err := b.client.AssignMiningWorker(cand.ID, 1); err == nil {
+						b.addLog(fmt.Sprintf("⛏️ [Profissões] %s atribuído à Mina de Pedras (Slot 1)!", cand.Name))
+					}
+				}
+			}
+
+			// 2. Fazenda: verificar se precisa alocar trabalhador no slot 1
+			farming, err := b.client.GetFarmWorkforce()
+			if err == nil && farming != nil {
+				if len(farming.Data.Workers) == 0 && len(farming.Data.Candidates) > 0 {
+					cand := farming.Data.Candidates[0]
+					if err := b.client.AssignFarmWorker(cand.ID, 1); err == nil {
+						b.addLog(fmt.Sprintf("🌾 [Profissões] %s atribuído à Fazenda (Slot 1)!", cand.Name))
+					}
+				}
+			}
+
+			// Coletar recompensas dos slots 1, 2, 3
+			for slot := 1; slot <= 3; slot++ {
 				_ = b.client.CollectMiningRewards(slot)
 				_ = b.client.CollectFarmRewards(slot)
 			}
