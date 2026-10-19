@@ -2,21 +2,20 @@
   "accounts": [
     {
       "currentArea": "Vulpix",
-      "durationSec": 1694,
-      "expPerHour": 37946.63518299882,
+      "durationSec": 1814,
+      "expPerHour": 38103.63836824697,
       "extra": {
         "circuitState": "CLOSED (Operação Normal)",
         "cooldownSec": 0,
         "leaderLevel": 7,
         "leaderName": ""
       },
-      "gold": 2823,
+      "gold": 2844,
       "hp": 106,
       "id": "acc-1",
-      "kills": 560,
+      "kills": 602,
       "level": 7,
       "logs": [
-        "[10:27:59] Chave de assinatura HMAC-SHA256 recebida e vinculada à sessão.",
         "[10:27:59] Treinador conectado: Treinador #1 (Nível 7 | Ouro: 2544)",
         "[10:27:59] Catálogo carregado: 377 zonas de caça disponíveis.",
         "[10:28:00] Conectando ao canal em tempo real WebSocket...",
@@ -35,19 +34,20 @@
         "[10:28:41] 🎯 Pokémon capturado com sucesso: magikarp",
         "[10:31:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[10:41:51] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[10:49:49] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
+        "[10:49:49] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
+        "[10:58:08] 🎁 Coletando recompensas diárias, missões e stamina..."
       ],
       "mana": 0,
       "maxHp": 106,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792407372580,
+      "updatedAt": 1792407492580,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 16,
-  "ramAllocMB": 1.284515380859375,
+  "goroutines": 17,
+  "ramAllocMB": 1.2880172729492188,
   "ramSysMB": 13.099861145019531,
-  "uptime": "28m16s"
+  "uptime": "30m14s"
 }
