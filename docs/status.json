@@ -2,18 +2,18 @@
   "accounts": [
     {
       "currentArea": "Vulpix",
-      "durationSec": 1934,
-      "expPerHour": 38360.28955532575,
+      "durationSec": 2054,
+      "expPerHour": 38362.609542356375,
       "extra": {
         "circuitState": "CLOSED (Operação Normal)",
         "cooldownSec": 0,
         "leaderLevel": 7,
         "leaderName": ""
       },
-      "gold": 2866,
+      "gold": 2886,
       "hp": 106,
       "id": "acc-1",
-      "kills": 646,
+      "kills": 687,
       "level": 7,
       "logs": [
         "[10:27:59] Catálogo carregado: 377 zonas de caça disponíveis.",
@@ -42,12 +42,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792407612580,
+      "updatedAt": 1792407732580,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 1.0898361206054688,
+  "ramAllocMB": 1.0804977416992188,
   "ramSysMB": 13.099861145019531,
-  "uptime": "32m16s"
+  "uptime": "34m15s"
 }
