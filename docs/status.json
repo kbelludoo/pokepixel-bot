@@ -2,18 +2,18 @@
   "accounts": [
     {
       "currentArea": "Vulpix",
-      "durationSec": 1210,
-      "expPerHour": 37892.23140495868,
+      "durationSec": 1214,
+      "expPerHour": 37957.16639209225,
       "extra": {
         "circuitState": "CLOSED (Operação Normal)",
         "cooldownSec": 0,
         "leaderLevel": 7,
         "leaderName": ""
       },
-      "gold": 2743,
+      "gold": 2744,
       "hp": 98,
       "id": "acc-1",
-      "kills": 398,
+      "kills": 400,
       "level": 7,
       "logs": [
         "[10:27:59] Login realizado com sucesso! Token de acesso recebido.",
@@ -42,12 +42,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792406888580,
+      "updatedAt": 1792406892580,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.3264999389648438,
+  "ramAllocMB": 1.1798324584960938,
   "ramSysMB": 13.099861145019531,
-  "uptime": "20m10s"
+  "uptime": "20m16s"
 }
