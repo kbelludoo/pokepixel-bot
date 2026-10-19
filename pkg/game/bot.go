@@ -302,7 +302,15 @@ func (b *Bot) handleWebSocketMessage(data []byte) {
 		}
 		b.status.Kills = b.sessionKills
 		b.status.Gold += loot.Gold
+		currentKills := b.sessionKills
 		b.mu.Unlock()
+
+		if b.config.Settings.BestiaryFocus && currentKills%25 == 0 {
+			go func() {
+				_ = b.client.ClaimAllSpeciesGoals()
+				b.recalculateOptimalRoute()
+			}()
+		}
 
 	case "level.up", "trainer.level_up":
 		var lvl struct {
@@ -417,29 +425,53 @@ func (b *Bot) startHunting() {
 		b.mu.Unlock()
 		return
 	}
+	zones := b.zones
+	leader := b.teamLeader
+	trainerLevel := b.status.Level
+	isBestiary := b.config.Settings.BestiaryFocus || b.config.Settings.HuntTarget == "bestiary"
+	targetConfig := b.config.Settings.HuntTarget
+	b.mu.Unlock()
 
 	// 1. Determinar a zona
 	var targetZone *Zone
-	if b.config.Settings.HuntTarget == "auto" || b.config.Settings.HuntTarget == "" {
-		targetZone = FindOptimalZone(b.zones, b.teamLeader)
-	} else {
-		for i := range b.zones {
-			if b.zones[i].ID == b.config.Settings.HuntTarget {
-				targetZone = &b.zones[i]
-				break
-			}
-		}
-		if targetZone == nil {
-			targetZone = FindOptimalZone(b.zones, b.teamLeader)
+	var bestiaryReason string
+
+	if isBestiary {
+		bestiary, _ := b.client.GetBestiary()
+		goals, _ := b.client.GetSpeciesGoals()
+		dec := FindBestiaryZone(zones, leader, trainerLevel, bestiary, goals)
+		if dec != nil {
+			targetZone = dec.Zone
+			bestiaryReason = dec.Reason
 		}
 	}
 
 	if targetZone == nil {
-		b.mu.Unlock()
+		if targetConfig == "auto" || targetConfig == "" || targetConfig == "bestiary" {
+			targetZone = FindOptimalZone(zones, leader)
+		} else {
+			for i := range zones {
+				if zones[i].ID == targetConfig {
+					targetZone = &zones[i]
+					break
+				}
+			}
+			if targetZone == nil {
+				targetZone = FindOptimalZone(zones, leader)
+			}
+		}
+	}
+
+	if targetZone == nil {
 		b.addLog("Aviso: Nenhuma zona disponível para iniciar caçada.")
 		return
 	}
 
+	if bestiaryReason != "" {
+		b.addLog(fmt.Sprintf("📖 %s", bestiaryReason))
+	}
+
+	b.mu.Lock()
 	b.currentZone = targetZone
 	b.status.CurrentArea = targetZone.Name
 	b.mu.Unlock()
@@ -508,14 +540,35 @@ func (b *Bot) recalculateOptimalRoute() {
 	zones := b.zones
 	leader := b.teamLeader
 	currZone := b.currentZone
+	trainerLevel := b.status.Level
+	isBestiary := b.config.Settings.BestiaryFocus || b.config.Settings.HuntTarget == "bestiary"
 	b.mu.RUnlock()
 
-	newZone := FindOptimalZone(zones, leader)
+	var newZone *Zone
+	var logMsg string
+
+	if isBestiary {
+		bestiary, _ := b.client.GetBestiary()
+		goals, _ := b.client.GetSpeciesGoals()
+		dec := FindBestiaryZone(zones, leader, trainerLevel, bestiary, goals)
+		if dec != nil {
+			newZone = dec.Zone
+			logMsg = fmt.Sprintf("🔄 [Foco Bestiário] %s -> Transitando para %s (Lv. %d)...", dec.Reason, newZone.Name, newZone.RecommendedLevel)
+		}
+	}
+
+	if newZone == nil {
+		newZone = FindOptimalZone(zones, leader)
+		if newZone != nil {
+			logMsg = fmt.Sprintf("🔄 [Dynamic Route Solver] Zona ótima recalculada: %s (Lv. %d). Transitando...", newZone.Name, newZone.RecommendedLevel)
+		}
+	}
+
 	if newZone == nil || (currZone != nil && currZone.ID == newZone.ID) {
 		return
 	}
 
-	b.addLog(fmt.Sprintf("🔄 [Dynamic Route Solver] Zona ótima recalculada: %s (Lv. %d). Transitando...", newZone.Name, newZone.RecommendedLevel))
+	b.addLog(logMsg)
 	_ = b.client.StopHunt()
 
 	b.mu.Lock()
@@ -523,6 +576,8 @@ func (b *Bot) recalculateOptimalRoute() {
 	b.currentZone = newZone
 	b.status.CurrentArea = newZone.Name
 	b.mu.Unlock()
+
+	b.startHunting()
 }
 
 func (b *Bot) handleDefeat() {
@@ -760,6 +815,7 @@ func (b *Bot) runMetricsLoop(ctx context.Context) {
 				b.status.Extra["leaderName"] = b.teamLeader.Name
 				b.status.Extra["leaderLevel"] = b.teamLeader.Level
 			}
+			b.status.Extra["bestiaryFocus"] = b.config.Settings.BestiaryFocus
 			b.mu.Unlock()
 		}
 	}
@@ -897,6 +953,16 @@ func (b *Bot) ExecuteAction(action string, payload map[string]any) (any, error) 
 			return "Circuit Breaker restaurado manualmente!", nil
 		}
 		return nil, fmt.Errorf("circuit breaker não inicializado")
+
+	case "toggleBestiaryFocus":
+		b.config.Settings.BestiaryFocus = !b.config.Settings.BestiaryFocus
+		statusStr := "desativado"
+		if b.config.Settings.BestiaryFocus {
+			statusStr = "ativado (priorizando espécies pendentes no Bestiário)"
+			go b.recalculateOptimalRoute()
+		}
+		b.status.Logs = append(b.status.Logs, fmt.Sprintf("📖 Foco no Bestiário %s.", statusStr))
+		return map[string]any{"bestiaryFocus": b.config.Settings.BestiaryFocus}, nil
 
 	default:
 		return nil, fmt.Errorf("ação desconhecida: %s", action)

@@ -34,6 +34,7 @@ type GameSettings struct {
 	AutoDaily        bool   `json:"autoDaily"`        // Resgate automático de login diário, missões, jornada e stamina
 	AutoProfessions  bool   `json:"autoProfessions"`  // Coleta automática de mineração, fazenda e pesca
 	AutoBreeding     bool   `json:"autoBreeding"`     // Verificação e eclosão de ovos
+	BestiaryFocus    bool   `json:"bestiaryFocus"`    // Foco prioritário em completar marcos do Bestiário
 	StealthMode      bool   `json:"stealthMode"`      // Modo stealth: mascara nicks reais no dashboard
 }
 
@@ -229,3 +230,56 @@ type WSHuntEnterPayload struct {
 	MapID  int    `json:"map_id"`
 	ZoneID string `json:"zone_id"`
 }
+
+// ----------------------------------------------------------------------------
+// Bestiary & Species Goals
+// ----------------------------------------------------------------------------
+
+type BestiaryResponse struct {
+	Summary BestiarySummary `json:"summary"`
+	Tiers   []int           `json:"tiers"`
+	Data    []BestiaryEntry `json:"data"`
+}
+
+type BestiarySummary struct {
+	CompletedSpecies     int  `json:"completed_species"`
+	TotalSpecies         int  `json:"total_species"`
+	CompletedTiers       int  `json:"completed_tiers"`
+	SaleBonusBasisPoints int  `json:"sale_bonus_basis_points"`
+	Enabled              bool `json:"enabled"`
+}
+
+type BestiaryEntry struct {
+	DexID                    int            `json:"dex_id"`
+	SpeciesID                string         `json:"species_id"`
+	SpeciesName              string         `json:"species_name"`
+	KillCount                int            `json:"kill_count"`
+	Elements                 []string       `json:"elements"`
+	Rarity                   string         `json:"rarity"`
+	UnlockedBonusBasisPoints int            `json:"unlocked_bonus_basis_points"`
+	NextKillThreshold        int            `json:"next_kill_threshold"`
+	Tiers                    []BestiaryTier `json:"tiers"`
+}
+
+type BestiaryTier struct {
+	KillThreshold    int  `json:"kill_threshold"`
+	BonusBasisPoints int  `json:"bonus_basis_points"`
+	Completed        bool `json:"completed"`
+}
+
+type SpeciesGoal struct {
+	SpeciesID    string            `json:"species_id"`
+	SpeciesName  string            `json:"species_name"`
+	KillCount    int               `json:"kill_count"`
+	CaptureCount int               `json:"capture_count"`
+	KillTiers    []SpeciesGoalTier `json:"kill_tiers"`
+	CaptureTiers []SpeciesGoalTier `json:"capture_tiers"`
+}
+
+type SpeciesGoalTier struct {
+	Threshold int   `json:"threshold"`
+	Claimed   bool  `json:"claimed"`
+	CanClaim  bool  `json:"can_claim"`
+	Rewards   []any `json:"rewards"`
+}
+

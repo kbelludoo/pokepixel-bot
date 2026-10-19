@@ -504,3 +504,34 @@ func (c *GameClient) HatchBreeding(eggID string) error {
 func (c *GameClient) SellShopItems(items []map[string]any) error {
 	return c.DoRequest(http.MethodPost, "/shop/sell/items", map[string]any{"items": items}, nil, false)
 }
+
+func (c *GameClient) GetBestiary() (*BestiaryResponse, error) {
+	var resp struct {
+		Data BestiaryResponse `json:"data"`
+	}
+	err := c.DoRequest(http.MethodGet, "/bestiary", nil, &resp, false)
+	if err == nil && (len(resp.Data.Data) > 0 || resp.Data.Summary.TotalSpecies > 0) {
+		return &resp.Data, nil
+	}
+	var direct BestiaryResponse
+	if err2 := c.DoRequest(http.MethodGet, "/bestiary", nil, &direct, false); err2 == nil {
+		return &direct, nil
+	}
+	return nil, err
+}
+
+func (c *GameClient) GetSpeciesGoals() ([]SpeciesGoal, error) {
+	var resp struct {
+		Data []SpeciesGoal `json:"data"`
+	}
+	err := c.DoRequest(http.MethodGet, "/species-goals", nil, &resp, false)
+	if err == nil && len(resp.Data) > 0 {
+		return resp.Data, nil
+	}
+	var direct []SpeciesGoal
+	if err2 := c.DoRequest(http.MethodGet, "/species-goals", nil, &direct, false); err2 == nil {
+		return direct, nil
+	}
+	return nil, err
+}
+
