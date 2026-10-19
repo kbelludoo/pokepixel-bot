@@ -2,18 +2,18 @@
   "accounts": [
     {
       "currentArea": "Vulpix",
-      "durationSec": 1454,
-      "expPerHour": 37871.801925722146,
+      "durationSec": 1570,
+      "expPerHour": 38008.66242038216,
       "extra": {
         "circuitState": "CLOSED (Operação Normal)",
         "cooldownSec": 0,
         "leaderLevel": 7,
         "leaderName": ""
       },
-      "gold": 2783,
+      "gold": 2804,
       "hp": 106,
       "id": "acc-1",
-      "kills": 478,
+      "kills": 520,
       "level": 7,
       "logs": [
         "[10:27:59] Chave de assinatura HMAC-SHA256 recebida e vinculada à sessão.",
@@ -42,12 +42,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792407132581,
+      "updatedAt": 1792407248581,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 16,
-  "ramAllocMB": 1.012176513671875,
+  "goroutines": 17,
+  "ramAllocMB": 1.3400115966796875,
   "ramSysMB": 13.099861145019531,
-  "uptime": "24m15s"
+  "uptime": "26m13s"
 }
