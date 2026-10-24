@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Diglett",
-      "durationSec": 430086,
-      "expPerHour": 270.90023855693977,
+      "durationSec": 430210,
+      "expPerHour": 270.822156621185,
       "extra": {
         "bestiaryFocus": true,
         "circuitState": "CLOSED (Operação Normal)",
@@ -17,7 +17,6 @@
       "kills": 522,
       "level": 12,
       "logs": [
-        "[13:10:18] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[13:40:18] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[14:10:18] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[14:40:18] 🎁 Coletando recompensas diárias, missões e stamina...",
@@ -36,19 +35,20 @@
         "[21:10:18] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[21:40:18] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[22:10:18] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[22:40:18] 🎁 Coletando recompensas diárias, missões e stamina..."
+        "[22:40:18] 🎁 Coletando recompensas diárias, missões e stamina...",
+        "[23:10:18] 🎁 Coletando recompensas diárias, missões e stamina..."
       ],
       "mana": 0,
       "maxHp": 135,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "Reconectando...",
-      "updatedAt": 1792883295079,
+      "updatedAt": 1792883419079,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 15,
-  "ramAllocMB": 1.2594451904296875,
+  "goroutines": 17,
+  "ramAllocMB": 1.2032699584960938,
   "ramSysMB": 13.349861145019531,
-  "uptime": "119h28m8s"
+  "uptime": "119h30m10s"
 }
