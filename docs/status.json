@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Diglett",
-      "durationSec": 423366,
-      "expPerHour": 275.2001814033248,
+      "durationSec": 423486,
+      "expPerHour": 275.12220002550265,
       "extra": {
         "bestiaryFocus": true,
         "circuitState": "CLOSED (Operação Normal)",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "Reconectando...",
-      "updatedAt": 1792876575079,
+      "updatedAt": 1792876695079,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 16,
-  "ramAllocMB": 1.1461563110351562,
+  "goroutines": 15,
+  "ramAllocMB": 1.1291122436523438,
   "ramSysMB": 13.349861145019531,
-  "uptime": "117h36m8s"
+  "uptime": "117h38m9s"
 }
