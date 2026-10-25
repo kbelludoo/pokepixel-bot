@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 8010,
-      "expPerHour": 122433.70786516854,
+      "durationSec": 8130,
+      "expPerHour": 122612.54612546126,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 14503,
+      "gold": 14549,
       "hp": 202,
       "id": "acc-1",
-      "kills": 2903,
+      "kills": 2948,
       "level": 14,
       "logs": [
         "[16:38:53] ✓ Recompensas do Passe de Batalha resgatadas.",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792954335798,
+      "updatedAt": 1792954455798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.1276779174804688,
+  "ramAllocMB": 1.1919631958007812,
   "ramSysMB": 13.349861145019531,
-  "uptime": "2h13m31s"
+  "uptime": "2h15m31s"
 }
