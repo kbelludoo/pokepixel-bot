@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 9690,
-      "expPerHour": 124461.91950464397,
+      "durationSec": 9810,
+      "expPerHour": 124656.88073394496,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,13 +11,12 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 15147,
+      "gold": 15193,
       "hp": 215,
       "id": "acc-1",
-      "kills": 3543,
+      "kills": 3587,
       "level": 14,
       "logs": [
-        "[17:01:18] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:03:42] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[17:16:45] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
@@ -36,19 +35,20 @@
         "[18:55:18] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[18:57:18] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[19:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[19:19:49] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
+        "[19:19:49] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
+        "[19:21:48] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
       ],
       "mana": 0,
       "maxHp": 215,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792956015797,
+      "updatedAt": 1792956135798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.6616439819335938,
+  "ramAllocMB": 1.6829910278320312,
   "ramSysMB": 13.349861145019531,
-  "uptime": "2h41m33s"
+  "uptime": "2h43m32s"
 }
