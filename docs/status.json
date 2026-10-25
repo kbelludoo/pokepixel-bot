@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 938,
-      "expPerHour": 114505.33049040512,
+      "durationSec": 1062,
+      "expPerHour": 114355.93220338982,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 12015,
+      "gold": 12055,
       "hp": 151,
       "id": "acc-1",
-      "kills": 334,
+      "kills": 379,
       "level": 14,
       "logs": [
         "[16:38:45] Inicializando cliente PokePixel...",
@@ -42,12 +42,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792947263798,
+      "updatedAt": 1792947387798,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 17,
-  "ramAllocMB": 1.6597442626953125,
+  "goroutines": 16,
+  "ramAllocMB": 1.6905288696289062,
   "ramSysMB": 13.099861145019531,
-  "uptime": "15m39s"
+  "uptime": "17m44s"
 }
