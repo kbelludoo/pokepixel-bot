@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 6450,
-      "expPerHour": 120482.79069767441,
+      "durationSec": 6570,
+      "expPerHour": 120632.87671232877,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 13925,
+      "gold": 13967,
       "hp": 190,
       "id": "acc-1",
-      "kills": 2329,
+      "kills": 2371,
       "level": 14,
       "logs": [
         "[16:38:53] ✓ Farm Offline e Stamina processados.",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792952775798,
+      "updatedAt": 1792952895798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.5932769775390625,
+  "ramAllocMB": 1.6627273559570312,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h47m32s"
+  "uptime": "1h49m33s"
 }
