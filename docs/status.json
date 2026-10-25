@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 3330,
-      "expPerHour": 115313.51351351352,
+      "durationSec": 3458,
+      "expPerHour": 115714.28571428572,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,13 +11,12 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 12803,
+      "gold": 12849,
       "hp": 175,
       "id": "acc-1",
-      "kills": 1180,
+      "kills": 1227,
       "level": 14,
       "logs": [
-        "[16:38:47] Catálogo carregado: 377 zonas de caça disponíveis.",
         "[16:38:47] Conectando ao canal em tempo real WebSocket...",
         "[16:38:47] WebSocket conectado com sucesso! Sessão autoritativa iniciada.",
         "[16:38:47] ⚡ [WS] Servidor autorizou conexão (connection.ready).",
@@ -36,19 +35,20 @@
         "[17:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[17:16:45] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:19:00] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[17:33:43] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
+        "[17:33:43] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
+        "[17:36:00] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
       ],
       "mana": 0,
       "maxHp": 175,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792949655797,
+      "updatedAt": 1792949783798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.6862258911132812,
+  "ramAllocMB": 1.7187271118164062,
   "ramSysMB": 13.349861145019531,
-  "uptime": "55m31s"
+  "uptime": "57m40s"
 }
