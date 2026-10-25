@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 7050,
-      "expPerHour": 121182.12765957447,
+      "durationSec": 7174,
+      "expPerHour": 121338.16559799276,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 14145,
+      "gold": 14189,
       "hp": 202,
       "id": "acc-1",
-      "kills": 2549,
+      "kills": 2592,
       "level": 14,
       "logs": [
         "[16:38:53] ✓ Metas de Espécies resgatadas.",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792953375798,
+      "updatedAt": 1792953499797,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.2058029174804688,
+  "ramAllocMB": 1.53375244140625,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h57m32s"
+  "uptime": "1h59m35s"
 }
