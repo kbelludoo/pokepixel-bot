@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 3694,
-      "expPerHour": 116493.23226854358,
+      "durationSec": 3810,
+      "expPerHour": 116447.24409448818,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 12935,
+      "gold": 12975,
       "hp": 175,
       "id": "acc-1",
-      "kills": 1315,
+      "kills": 1356,
       "level": 14,
       "logs": [
         "[16:38:47] WebSocket conectado com sucesso! Sessão autoritativa iniciada.",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792950019798,
+      "updatedAt": 1792950135798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.6477737426757812,
+  "ramAllocMB": 1.65985107421875,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h1m35s"
+  "uptime": "1h3m32s"
 }
