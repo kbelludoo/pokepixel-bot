@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 4422,
-      "expPerHour": 117476.2550881954,
+      "durationSec": 4530,
+      "expPerHour": 117464.90066225166,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,13 +11,12 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 13189,
+      "gold": 13227,
       "hp": 183,
       "id": "acc-1",
-      "kills": 1579,
+      "kills": 1618,
       "level": 14,
       "logs": [
-        "[16:38:47] ⚡ [WS] Servidor autorizou conexão (connection.ready).",
         "[16:38:52] Preparando entrada na zona: Charmander (Nível Rec: 14)...",
         "[16:38:52] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[16:38:52] ⚔️ Caçada ativa no mapa 36 (Charmander)!",
@@ -36,19 +35,20 @@
         "[17:33:43] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:36:00] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[17:51:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
+        "[17:51:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
+        "[17:53:58] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
       ],
       "mana": 0,
       "maxHp": 183,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792950747798,
+      "updatedAt": 1792950855798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.5210647583007812,
+  "ramAllocMB": 1.68890380859375,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h13m43s"
+  "uptime": "1h15m32s"
 }
