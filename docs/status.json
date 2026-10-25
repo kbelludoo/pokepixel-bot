@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 5618,
-      "expPerHour": 118832.68066927731,
+      "durationSec": 5730,
+      "expPerHour": 119205.23560209424,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,13 +11,12 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 13613,
+      "gold": 13657,
       "hp": 190,
       "id": "acc-1",
-      "kills": 2018,
+      "kills": 2062,
       "level": 14,
       "logs": [
-        "[16:38:52] ⚔️ Caçada ativa no mapa 36 (Charmander)!",
         "[16:38:53] ✓ Farm Offline e Stamina processados.",
         "[16:38:53] ✓ Missões concluídas resgatadas.",
         "[16:38:53] ✓ Metas de Espécies resgatadas.",
@@ -36,19 +35,20 @@
         "[17:51:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[17:53:58] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[18:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[18:11:26] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
+        "[18:11:26] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
+        "[18:13:39] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!"
       ],
       "mana": 0,
       "maxHp": 190,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792951943798,
+      "updatedAt": 1792952055798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.5367813110351562,
+  "ramAllocMB": 1.6637496948242188,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h33m39s"
+  "uptime": "1h35m34s"
 }
