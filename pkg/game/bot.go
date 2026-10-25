@@ -243,14 +243,45 @@ func (b *Bot) Run(ctx context.Context) error {
 			b.updateStatus(func(s *engine.AccountStatus) {
 				s.Status = "Reconectando..."
 			})
-			b.addLog(fmt.Sprintf("Conexão interrompida (%v). Aguardando para reconectar...", discErr))
-			time.Sleep(3 * time.Second)
-			b.addLog("Tentando reconectar WebSocket...")
-			if err := b.socket.Connect(); err != nil {
-				b.addLog(fmt.Sprintf("Falha ao reconectar WebSocket: %v", err))
-			} else {
-				b.addLog("WebSocket reconectado com sucesso!")
+			b.addLog(fmt.Sprintf("Conexão interrompida (%v). Iniciando reconexão contínua com reautenticação...", discErr))
+
+			backoff := 3 * time.Second
+			for {
+				select {
+				case <-ctx.Done():
+					return ctx.Err()
+				case <-time.After(backoff):
+				}
+
+				// 1. Reautenticar para renovar token e chaves de sessão
+				loginRes, err := b.client.Login(b.config.Credentials.Email, b.config.Credentials.Password)
+				if err != nil {
+					b.addLog(fmt.Sprintf("Reautenticação HTTP pendente (%v). Tentando novamente em %v...", err, backoff))
+					if backoff < 30*time.Second {
+						backoff *= 2
+					}
+					continue
+				}
+
+				// 2. Atualizar headers do WebSocket com o novo token
+				headers := make(http.Header)
+				headers.Set("Authorization", "Bearer "+loginRes.AccessToken)
+				headers.Set("X-PokeIdle-Client-Version", b.client.GetClientVersion())
+				headers.Set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+				b.socket.SetHeaders(headers)
+
+				// 3. Reconectar socket
+				if err := b.socket.Connect(); err != nil {
+					b.addLog(fmt.Sprintf("Falha ao reconectar WebSocket (%v). Tentando novamente em %v...", err, backoff))
+					if backoff < 30*time.Second {
+						backoff *= 2
+					}
+					continue
+				}
+
+				b.addLog("WebSocket reconectado com sucesso após reautenticação!")
 				b.resumeHuntSession()
+				break
 			}
 		}
 	}

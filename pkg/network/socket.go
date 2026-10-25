@@ -44,6 +44,12 @@ func NewSocketClient(url string, headers http.Header, onMsg MessageHandler, onDi
 	}
 }
 
+func (s *SocketClient) SetHeaders(headers http.Header) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.headers = headers
+}
+
 func (s *SocketClient) Connect() error {
 	dialer := websocket.Dialer{
 		HandshakeTimeout: 15 * time.Second,

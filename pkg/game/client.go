@@ -80,6 +80,10 @@ func (c *GameClient) GetToken() string {
 	return c.accessToken
 }
 
+func (c *GameClient) GetClientVersion() string {
+	return c.clientVersion
+}
+
 func (c *GameClient) SetSigningKey(key string) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
