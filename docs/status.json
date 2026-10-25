@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 5254,
-      "expPerHour": 118380.66235249334,
+      "durationSec": 5370,
+      "expPerHour": 118699.44134078211,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 13483,
+      "gold": 13525,
       "hp": 183,
       "id": "acc-1",
-      "kills": 1885,
+      "kills": 1927,
       "level": 14,
       "logs": [
         "[16:38:52] Preparando entrada na zona: Charmander (Nível Rec: 14)...",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792951579798,
+      "updatedAt": 1792951695797,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.1982955932617188,
+  "ramAllocMB": 1.4903106689453125,
   "ramSysMB": 13.349861145019531,
-  "uptime": "1h27m36s"
+  "uptime": "1h29m33s"
 }
