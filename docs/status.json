@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 77990,
-      "expPerHour": 150603.47736889345,
+      "durationSec": 78090,
+      "expPerHour": 150410.61851709566,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -17,8 +17,6 @@
       "kills": 30122,
       "level": 14,
       "logs": [
-        "[11:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[11:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[12:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[12:12:43] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[12:14:38] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
@@ -36,19 +34,21 @@
         "[14:16:02] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 24s...",
         "[14:16:50] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
         "[14:17:39] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
-        "[14:18:28] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s..."
+        "[14:18:28] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:19:17] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:20:06] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s..."
       ],
       "mana": 0,
       "maxHp": 399,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "Reconectando...",
-      "updatedAt": 1793024315798,
+      "updatedAt": 1793024415798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 1.5552444458007812,
+  "ramAllocMB": 1.3011093139648438,
   "ramSysMB": 13.349861145019531,
-  "uptime": "21h39m52s"
+  "uptime": "21h41m33s"
 }
