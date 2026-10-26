@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 64654,
-      "expPerHour": 152330.2688155412,
+      "durationSec": 64786,
+      "expPerHour": 152323.29824344764,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 37583,
+      "gold": 37641,
       "hp": 378,
       "id": "acc-1",
-      "kills": 24990,
+      "kills": 25044,
       "level": 14,
       "logs": [
         "[04:39:58] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1793010979798,
+      "updatedAt": 1793011111798,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 17,
-  "ramAllocMB": 1.738006591796875,
+  "goroutines": 16,
+  "ramAllocMB": 1.2079238891601562,
   "ramSysMB": 13.349861145019531,
-  "uptime": "17h57m35s"
+  "uptime": "17h59m50s"
 }
