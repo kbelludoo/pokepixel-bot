@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 77874,
-      "expPerHour": 150827.81416133756,
+      "durationSec": 77990,
+      "expPerHour": 150603.47736889345,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -17,9 +17,6 @@
       "kills": 30122,
       "level": 14,
       "logs": [
-        "[10:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[10:47:12] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[10:49:04] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[11:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[11:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[12:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
@@ -36,19 +33,22 @@
         "[14:15:17] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 3s...",
         "[14:15:24] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 6s...",
         "[14:15:37] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 12s...",
-        "[14:16:02] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 24s..."
+        "[14:16:02] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 24s...",
+        "[14:16:50] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:17:39] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:18:28] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s..."
       ],
       "mana": 0,
       "maxHp": 399,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "Reconectando...",
-      "updatedAt": 1793024199797,
+      "updatedAt": 1793024315798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 1.378631591796875,
+  "ramAllocMB": 1.5552444458007812,
   "ramSysMB": 13.349861145019531,
-  "uptime": "21h37m55s"
+  "uptime": "21h39m52s"
 }
