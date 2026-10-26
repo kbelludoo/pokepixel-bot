@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 30942,
-      "expPerHour": 161117.74287376384,
+      "durationSec": 31062,
+      "expPerHour": 161060.3051960595,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,10 +11,10 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 23727,
+      "gold": 23777,
       "hp": 306,
       "id": "acc-1",
-      "kills": 11779,
+      "kills": 11827,
       "level": 14,
       "logs": [
         "[21:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
@@ -43,12 +43,12 @@
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "hunting",
-      "updatedAt": 1792977267798,
+      "updatedAt": 1792977387798,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 17,
-  "ramAllocMB": 1.7329330444335938,
+  "ramAllocMB": 1.77783203125,
   "ramSysMB": 13.349861145019531,
-  "uptime": "8h35m43s"
+  "uptime": "8h37m42s"
 }
