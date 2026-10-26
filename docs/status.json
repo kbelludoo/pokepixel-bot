@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 77734,
-      "expPerHour": 151000.11835232974,
+      "durationSec": 77874,
+      "expPerHour": 150827.81416133756,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -11,18 +11,12 @@
         "leaderLevel": 14,
         "leaderName": ""
       },
-      "gold": 42969,
+      "gold": 42987,
       "hp": 399,
       "id": "acc-1",
-      "kills": 30103,
+      "kills": 30122,
       "level": 14,
       "logs": [
-        "[08:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[09:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[09:26:12] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[09:28:04] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[09:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[10:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[10:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[10:47:12] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[10:49:04] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
@@ -36,19 +30,25 @@
         "[13:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[13:41:13] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[13:43:04] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[14:08:55] 🎁 Coletando recompensas diárias, missões e stamina..."
+        "[14:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
+        "[14:15:13] WebSocket desconectado: read tcp 10.0.0.191:48856-\u003e104.21.15.194:443: read: connection reset by peer",
+        "[14:15:13] Conexão interrompida (read tcp 10.0.0.191:48856-\u003e104.21.15.194:443: read: connection reset by peer). Iniciando reconexão contínua com reautenticação...",
+        "[14:15:17] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 3s...",
+        "[14:15:24] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 6s...",
+        "[14:15:37] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 12s...",
+        "[14:16:02] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 24s..."
       ],
       "mana": 0,
       "maxHp": 399,
       "maxMana": 0,
       "name": "Treinador #1",
-      "status": "hunting",
-      "updatedAt": 1793024059797,
+      "status": "Reconectando...",
+      "updatedAt": 1793024199797,
       "vocation": "Treinador"
     }
   ],
-  "goroutines": 17,
-  "ramAllocMB": 1.7303466796875,
+  "goroutines": 16,
+  "ramAllocMB": 1.378631591796875,
   "ramSysMB": 13.349861145019531,
-  "uptime": "21h35m36s"
+  "uptime": "21h37m55s"
 }
