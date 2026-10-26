@@ -2,8 +2,8 @@
   "accounts": [
     {
       "currentArea": "Charmander",
-      "durationSec": 78362,
-      "expPerHour": 149888.5327071795,
+      "durationSec": 78474,
+      "expPerHour": 149674.60815047022,
       "extra": {
         "bestiaryFocus": false,
         "circuitState": "CLOSED (Operação Normal)",
@@ -17,9 +17,6 @@
       "kills": 30122,
       "level": 14,
       "logs": [
-        "[13:38:55] 🎁 Coletando recompensas diárias, missões e stamina...",
-        "[13:41:13] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
-        "[13:43:04] 🎉 PARABÉNS! SUBIU PARA O NÍVEL 0!",
         "[14:08:55] 🎁 Coletando recompensas diárias, missões e stamina...",
         "[14:15:13] WebSocket desconectado: read tcp 10.0.0.191:48856-\u003e104.21.15.194:443: read: connection reset by peer",
         "[14:15:13] Conexão interrompida (read tcp 10.0.0.191:48856-\u003e104.21.15.194:443: read: connection reset by peer). Iniciando reconexão contínua com reautenticação...",
@@ -36,19 +33,22 @@
         "[14:21:43] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
         "[14:22:32] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
         "[14:23:21] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
-        "[14:24:09] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s..."
+        "[14:24:09] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:24:58] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:25:47] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s...",
+        "[14:26:36] Falha ao reconectar WebSocket (websocket dial failed: websocket: bad handshake). Tentando novamente em 48s..."
       ],
       "mana": 0,
       "maxHp": 399,
       "maxMana": 0,
       "name": "Treinador #1",
       "status": "Reconectando...",
-      "updatedAt": 1793024687798,
+      "updatedAt": 1793024799799,
       "vocation": "Treinador"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 1.4470138549804688,
+  "ramAllocMB": 1.6811904907226562,
   "ramSysMB": 13.349861145019531,
-  "uptime": "21h46m3s"
+  "uptime": "21h47m58s"
 }
