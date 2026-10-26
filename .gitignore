@@ -29,3 +29,14 @@ temp/
 # OS artifacts
 .DS_Store
 Thumbs.db
+
+# Temporary extracted scripts & local caches
+*.js
+*.mbvm
+*.mbvmdb
+.agents/
+.cursor/
+.cursorrules
+.gemini/
+.opencode/
+CLAUDE.md

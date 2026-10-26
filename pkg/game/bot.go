@@ -333,6 +333,7 @@ func (b *Bot) handleWebSocketMessage(data []byte) {
 		}
 		b.status.Kills = b.sessionKills
 		b.status.Gold += loot.Gold
+		b.status.Status = "hunting"
 		currentKills := b.sessionKills
 		b.mu.Unlock()
 
@@ -546,6 +547,9 @@ func (b *Bot) resumeHuntSession() {
 	if b.socket == nil || !b.socket.IsConnected() {
 		return
 	}
+	b.updateStatus(func(s *engine.AccountStatus) {
+		s.Status = "hunting"
+	})
 	// Resumo de caçada
 	_ = b.socket.SendJSON(WSOutboundMessage{
 		Type: "hunt.resume",
